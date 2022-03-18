@@ -59,8 +59,8 @@ import { Results } from "./";
 import { Modal } from "../../components";
 import { library, words } from "./library";
 
-var rowRefs = ref([]);
-var tileRefs = ref([]);
+const rowRefs = ref([]);
+const tileRefs = ref([]);
 
 const data = reactive({
   library: library,
@@ -151,7 +151,7 @@ const getMatches = () => {
 
 const getOccurance = (dataProp, letter) => {
   let occurance = 0;
-  for (var j = 0; j < data.word.length; ++j) {
+  for (let j = 0; j < data.word.length; ++j) {
     if (dataProp[j] == letter) occurance++;
   }
   return occurance;

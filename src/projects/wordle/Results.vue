@@ -75,7 +75,7 @@ onMounted(() => {
   const obj = props.stats.guessDistribution;
   wordle.largestDist = 0;
 
-  for (var el in obj) {
+  for (const el in obj) {
     // eslint-disable-next-line no-prototype-builtins
     if (obj.hasOwnProperty(el)) {
       wordle.largestDist =

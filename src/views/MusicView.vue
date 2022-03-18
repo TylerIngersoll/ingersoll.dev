@@ -1,9 +1,9 @@
 <template>
-  <section v-if="content.development" class="development container">
+  <section v-if="content.music" class="music container">
     <transition
       name="fade"
       mode="out-in"
-      v-for="(article, index) in content.development"
+      v-for="(article, index) in content.music"
       :key="index"
     >
       <Article :article="article" :index="index" />

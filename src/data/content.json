@@ -25,104 +25,113 @@
     "home": [
       {
         "heading": "About me",
+        "headingLevel": 2,
         "content": [
-          "Hello, and welcome to my space on the internet! I typically spend my days playing in the web dev/tech space and I'm currently employed as a senior front-end dev for a well-known financial institution. I've been in the web dev/tech space for over 25 years now and really enjoy the constantly-changing landscape and technologies. When I'm not hunched over my keyboard I can be found playing drums or bass with various regional and national groups (although I've currently taken a step away from that scene). I'm the father of two young and awesome kids, an avid cyclist and runner, an occasional music composer, a lover of craft beer and bourbon, and sometimes a streaming service binge watcher.",
+          "Hello, and welcome to my space on the internet! I typically spend my days playing in the web dev/tech space and I'm currently employed as a senior front-end dev for a well-known financial institution. I've been in the web dev/tech space for over 25 years now and really enjoy the constantly-changing landscape and technologies. When I'm not hunched over my keyboard I can be found playing drums or bass with various regional and national groups (although I've currently taken a step away from that scene). I'm the father of two young awesome kids, an avid cyclist and runner, an occasional music composer, a lover of craft beer and bourbon, and sometimes a streaming service binge watcher.",
           "I intend to use this space as a central location to organize and share my different hobbies and projects. To learn more about me and my web development experience, check out my <a href='development'>development</a> page. To learn more about my past music projects and experience, visit my <a href='music'>music</a> page."
         ]
       }
     ],
-    "music": {
-      "heading": "Music"
-    },
-    "projects": {
-      "heading": "Projects",
-      "summary": [
-        "This is where I'll post my favorious projects I'm working on."
-      ],
-      "projectList": [
-        {
-          "project": "wordle",
-          "heading": "Wordle Clone",
-          "content": [
-            "This is a Wordle clone I made because I wanted to play it more than once a day.",
-            "<a href='/projects/wordle-clone'>Click here</a>"
-          ],
-          "screenCapture": ""
-        },
-        {
-          "project": "Untappd API",
-          "heading": "My favorite beers according to Untappd",
-          "content": [
-            "I enjoy craft beer and like to keep track of the beers I try on Untappd. Here are my top rated beers according to my data on the Untappd API."
-          ],
-          "screenCapture": ""
-        }
-      ]
-    },
-    "development": {
-      "heading": "Front-end / application development",
-      "summary": [
-        "I've been into web development for most of my adult life. It became an obsessive hobby back in the 1990s and then transitioned into a full-time career by the time I graduated from the University of Delaware in the early 2000s (with a degree in Business Admin/Finance). Since then I've held many roles, worked on countless projects, and I still find myself excited to work in the web development space &emdash; even after two decades.",
-        "In my current role, my small team and I develop and support a single-source component library used by various dev teams across the business. The component system is developed in Vue.js and then compiled into custom elements and distributed via internal NPM to Angular, Adobe Experience Manager, and Vue.js development teams (the Vue.js teams consume the component source files directly).",
-        "My past development projects have included landing pages and marketing websites for global corporations, adaptive HTML email campaigns in the FinTech space, fully-customized SharePoint intranet sites, mobile UIs controlling scientific hardware, and customized documentation delivery platforms for globally-localized documentation and learning materials. I've also held product ownership and system admin roles, have done a considerable amount of technical writing, and I've dabbled a bit in the graphic design space (and quickly exited)."
-      ],
-      "technologies": [
-        "JavaScript",
-        "CSS / SCSS",
-        "HTML",
-        "Vue.js",
-        "Angular",
-        "TypeScript",
-        "Custom elements",
-        "ExtJS",
-        "jQuery",
-        "Jest",
-        "Cypress",
-        "node.js",
-        "NPM / Yarn",
-        "ExpressJS",
-        "NestJS",
-        "Handlebars",
-        "Storybook",
-        "Accessibility (A11Y)",
-        "Git",
-        "Subversion (SVN)",
-        "Rational ClearCase",
-        "APIs",
-        "REST",
-        "XML",
-        "JSON",
-        "SharePoint development",
-        "HTML Email development",
-        "Adobe Robohelp HTML templates",
-        "Adobe Experience Manager (AEM) development",
-        "Continuous integration (CI)",
-        "Continuous deployment (CD)",
-        "Web applications",
-        "Microframeworks",
-        "Agile",
-        "Responsive development",
-        "Mobile development",
-        "Cross-browser consistency",
-        "Component libraries",
-        "Content Management",
-        "Trello",
-        "Jira",
-        "Bitbucket",
-        "Bamboo",
-        "Invision",
-        "Sketch",
-        "Adobe Photoshop",
-        "Adobe Illustrator"
-      ],
-      "uses": {
-        "about": "I love reading what other people use in their tech stack because I often learn about new tools and equipment this way. So, I've decided to create my own list of uses in the hopes that it helps somebody else.",
-        "list": [
-          "<span>VS Code</span> for my current editor (since 2017). Past code editors: Notepad, Notepad++, Dreamweaver, Sublime Text.",
-          ""
+    "music": [
+      {
+        "headingLevel": 2,
+        "heading": "Music",
+        "content": [
+          "This page will host some of my music archives and potentially new material."
+        ]
+      },
+      {
+        "heading": "Subtopic",
+        "content": ["Subtopic content."]
+      }
+    ],
+    "projects": [
+      {
+        "heading": "Projects",
+        "headingLevel": 2,
+        "content": [
+          "This is where I'll post my favorious projects I'm working on."
+        ]
+      },
+      {
+        "heading": "Wordle Clone",
+        "content": [
+          "This is a Wordle clone I made because I wanted to play it more than once a day.",
+          "<a href='/projects/wordle-clone'>Click here</a>"
+        ]
+      },
+      {
+        "heading": "Untappd API",
+        "component": "UntappdBeers",
+        "content": [
+          "I enjoy craft beer and like to keep track of the beers I try on Untappd. Here are my top rated beers according to my data on the Untappd API."
         ]
       }
-    },
+    ],
+    "development": [
+      {
+        "heading": "Front-end / web application development",
+        "headingLevel": 2,
+        "content": [
+          "I've been into web development for most of my adult life. It became an obsessive hobby back in the 1990s and then transitioned into a full-time career by the time I graduated from the University of Delaware in the early 2000s (with a degree in Business Admin/Finance). Since then I've held many roles, worked on countless projects, and I still find myself excited to work in the web development space &mdash; even after two decades.",
+          "In my current role, my small team and I develop and support a single-source component library used by various dev teams across the business. The component system is developed in Vue.js and then compiled into custom elements and distributed via internal NPM to Angular, Adobe Experience Manager, and Vue.js development teams (the Vue.js teams consume the component source files directly).",
+          "My past development projects have included landing pages and marketing websites for global corporations, adaptive HTML email campaigns in the FinTech space, fully-customized SharePoint intranet sites, mobile UIs controlling scientific hardware, and customized documentation delivery platforms for globally-localized documentation and learning materials. I've also held product ownership and system admin roles, have done a considerable amount of technical writing, and I've dabbled a bit in the graphic design space (and quickly exited)."
+        ]
+      },
+      {
+        "heading": "Tech stack",
+        "contentStyle": "inline",
+        "content": [
+          "JavaScript",
+          "CSS / SCSS",
+          "HTML",
+          "Vue.js",
+          "Angular",
+          "TypeScript",
+          "Custom elements",
+          "ExtJS",
+          "jQuery",
+          "Jest",
+          "Cypress",
+          "node.js",
+          "NPM / Yarn",
+          "ExpressJS",
+          "NestJS",
+          "Handlebars",
+          "Storybook",
+          "Accessibility (A11Y)",
+          "Git",
+          "Subversion (SVN)",
+          "Rational ClearCase",
+          "APIs",
+          "REST",
+          "XML",
+          "JSON",
+          "SharePoint development",
+          "HTML Email development",
+          "Adobe Robohelp HTML templates",
+          "Adobe Experience Manager (AEM) development",
+          "Continuous integration (CI)",
+          "Continuous deployment (CD)",
+          "Web applications",
+          "Microframeworks",
+          "Agile",
+          "Responsive development",
+          "Mobile development",
+          "Cross-browser consistency",
+          "Component libraries",
+          "Content Management",
+          "Trello",
+          "Jira",
+          "Bitbucket",
+          "Bamboo",
+          "Invision",
+          "Sketch",
+          "Adobe Photoshop",
+          "Adobe Illustrator"
+        ]
+      }
+    ],
     "icons": {
       "close": "<svg xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"xmlns=\"http://www.w3.org/2000/svg\"xmlns:cc=\"http://creativecommons.org/ns#\"xmlns:dc=\"http://purl.org/dc/elements/1.1/\"xmlns:svg=\"http://www.w3.org/2000/svg\"xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\"xmlns:sodipodi=\"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd\"xmlns:ns1=\"http://sozi.baierouge.fr\"xmlns:xlink=\"http://www.w3.org/1999/xlink\"id=\"svg2\"viewBox=\"0 0 744.09 1052.4\"version=\"1.1\"><g id=\"layer1\"><path id=\"svg-bg\" class=\"svg-bg\" d=\"m814.29 606.65a314.29 314.29 0 1 1 -628.57 0 314.29 314.29 0 1 1 628.57 0z\" stroke=\"#000\" stroke-width=\"5\" transform=\"matrix(1.1048 0 0 1.1048 -179.21 -162.53)\"/><g id=\"g3763\" transform=\"matrix(.91837 0 0 .91837 47.587 10.944)\" stroke=\"#fff\" stroke-linecap=\"round\" stroke-width=\"133.87\" fill=\"none\" > <path id=\"path2991\" class=\"svg-x\" d=\"m176.51 362.87 356.13 356.13\" /> <path id=\"path2993\" class=\"svg-x\" d=\"m532.64 362.87-356.13 356.13\" /></g></g></svg>"
     },

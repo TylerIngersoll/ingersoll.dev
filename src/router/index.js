@@ -29,12 +29,12 @@ const routes = [
         /* webpackChunkName: "projects--wordle-clone" */ "../projects/wordle/Wordle.vue"
       ),
   },
-  // {
-  //   path: "/music",
-  //   name: "Music",
-  //   component: () =>
-  //     import(/* webpackChunkName: "music" */ "../views/MusicView.vue"),
-  // },
+  {
+    path: "/music",
+    name: "Music",
+    component: () =>
+      import(/* webpackChunkName: "music" */ "../views/MusicView.vue"),
+  },
 ];
 
 const router = createRouter({

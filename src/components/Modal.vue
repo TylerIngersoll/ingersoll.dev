@@ -1,15 +1,19 @@
 <template>
   <transition name="fade" mode="out-in">
-    <div v-show="modalOpen" class="modal-background" @click.self="onModalClose">
+    <div
+      v-show="props.modalOpen"
+      class="modal-background"
+      @click.self="onModalClose"
+    >
       <div
         class="modal-window"
         tabindex="0"
-        :style="`max-width: ${maxWidth}`"
+        :style="`max-width: ${props.maxWidth}`"
         ref="modal"
-        :role="modalOpen ? 'dialog' : null"
-        :aria-modal="modalOpen ? 'true' : null"
-        :aria-labelledby="modalTitle"
-        :aria-describedby="modalContentId"
+        :role="props.modalOpen ? 'dialog' : null"
+        :aria-modal="props.modalOpen ? 'true' : null"
+        :aria-labelledby="props.modalTitle"
+        :aria-describedby="props.modalContentId"
       >
         <button
           class="close-button"
@@ -19,14 +23,14 @@
         />
         <slot>
           <span
-            v-if="modalContent"
-            :id="modalContentId"
-            v-html="modalContent"
+            v-if="props.modalContent"
+            :id="props.modalContentId"
+            v-html="props.modalContent"
           />
           <component
-            v-else-if="modalComponent"
-            :is="modalComponent"
-            :componentData="modalComponentData"
+            v-else-if="props.modalComponent"
+            :is="props.modalComponent"
+            :componentData="props.modalComponentData"
           />
         </slot>
       </div>
@@ -34,92 +38,102 @@
   </transition>
 </template>
 
-<script>
-export default {
-  name: "modal-component",
+<script setup>
+import {
+  ref,
+  computed,
+  defineEmits,
+  defineProps,
+  watch,
+  onBeforeMount,
+  onMounted,
+  onBeforeUnmount,
+  nextTick,
+} from "vue";
+import { useContentStore } from "@/store";
 
-  props: {
-    modalOpen: {
-      type: Boolean,
-      default: false,
-    },
+const store = useContentStore();
+const emit = defineEmits(["modal-close"]);
+const modal = ref(null);
 
-    modalTitle: {
-      type: String,
-      default: "",
-    },
-
-    modalContentId: {
-      type: String,
-      default: "",
-    },
-
-    modalContent: {
-      type: String,
-      default: "",
-    },
-
-    modalComponent: {
-      type: Object,
-      default: () => {},
-    },
-
-    modalComponentData: {
-      type: Object,
-      default: () => {},
-    },
-
-    maxWidth: {
-      type: String,
-      default: "",
-    },
+const props = defineProps({
+  modalOpen: {
+    type: Boolean,
+    default: false,
   },
 
-  computed: {
-    icons() {
-      return this.$store.state.content.icons;
-    },
+  modalTitle: {
+    type: String,
+    default: "",
   },
 
-  watch: {
-    modalOpen(val) {
-      if (val) {
-        this.$nextTick(() => {
-          this.$refs.modal.focus();
-        });
-        document.querySelector("body").classList.add("modal-open");
-      } else {
-        document.querySelector("body").classList.remove("modal-open");
-      }
-    },
+  modalContentId: {
+    type: String,
+    default: "",
   },
 
-  created() {
-    window.addEventListener("keydown", this.onKeydown);
+  modalContent: {
+    type: String,
+    default: "",
   },
 
-  mounted() {
-    if (this.modalOpen === true)
-      document.querySelector("body").classList.add("modal-open");
+  modalComponent: {
+    type: Object,
+    default: () => {},
   },
 
-  methods: {
-    onModalClose() {
-      if (this.modalOpen) {
-        this.$emit("modal-close");
-        document.querySelector("body").classList.remove("modal-open");
-      }
-    },
-
-    onKeydown(e) {
-      if (e.key === "Escape") this.onModalClose();
-    },
+  modalComponentData: {
+    type: Object,
+    default: () => {},
   },
 
-  beforeUnmount() {
-    window.removeEventListener("keydown", this.onKeydown);
+  maxWidth: {
+    type: String,
+    default: "",
   },
+});
+
+const icons = computed(() => {
+  return store.content.icons;
+});
+
+const onModalClose = () => {
+  if (props.modalOpen) {
+    emit("modal-close");
+    document.querySelector("body").classList.remove("modal-open");
+  }
 };
+
+const onKeydown = (e) => {
+  if (e.key === "Escape") onModalClose();
+};
+
+watch(
+  () => props.modalOpen,
+  () => {
+    if (props.modalOpen) {
+      nextTick(() => {
+        modal.value.focus();
+      });
+      document.querySelector("body").classList.add("modal-open");
+    } else {
+      document.querySelector("body").classList.remove("modal-open");
+    }
+  }
+);
+
+onBeforeMount(() => {
+  window.addEventListener("keydown", onKeydown);
+});
+
+onMounted(() => {
+  if (props.modalOpen === true)
+    document.querySelector("body").classList.add("modal-open");
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", onKeydown);
+});
 </script>
 
 <style>
@@ -141,7 +155,7 @@ body.modal-open {
     left: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: rgba($gray8, 0.85);
+    background-color: rgba($gray7, 0.95);
     z-index: 200;
   }
 

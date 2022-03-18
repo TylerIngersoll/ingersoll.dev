@@ -2316,7 +2316,7 @@ export const library = [
   "shave",
 ];
 
-export const dictionary = [
+export const words = [
   "aahed",
   "aalii",
   "aargh",

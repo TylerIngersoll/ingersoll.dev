@@ -21,14 +21,14 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "projects" */ "../views/ProjectsView.vue"),
   },
-  // {
-  //   path: "/projects/wordle-clone",
-  //   name: "Wordle Clone",
-  //   component: () =>
-  //     import(
-  //       /* webpackChunkName: "projects--wordle-clone" */ "../projects/wordle-clone/Wordle.vue"
-  //     ),
-  // },
+  {
+    path: "/projects/wordle-clone",
+    name: "Wordle Clone",
+    component: () =>
+      import(
+        /* webpackChunkName: "projects--wordle-clone" */ "../projects/wordle/Wordle.vue"
+      ),
+  },
   // {
   //   path: "/music",
   //   name: "Music",

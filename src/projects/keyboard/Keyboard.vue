@@ -1,10 +1,14 @@
 <template>
   <div class="keyboard">
-    <div v-for="(row, index) in keys" :key="index" class="row">
+    <div v-for="(row, index) in keyboard.keys" :key="index" class="row">
       <button
         v-for="(key, keyIndex) in row"
         :key="keyIndex"
-        :ref="`key${key}`"
+        :ref="
+          (el) => {
+            keyRefs[key] = el;
+          }
+        "
         :class="['key', key.toLowerCase()]"
         @click="() => onKeyPress(key)"
         @touch="() => onKeyPress(key)"
@@ -16,88 +20,95 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "Keyboard",
+<script setup>
+import {
+  defineEmits,
+  defineProps,
+  reactive,
+  computed,
+  onBeforeMount,
+  onBeforeUnmount,
+  ref,
+  watch,
+} from "vue";
 
-  props: {
-    /**
-     * `{ key: 'x', class: 'miss | present | match' }`
-     */
-    keyClass: {
-      type: Array,
-      default: () => [],
-    },
+const keyRefs = ref([]);
+const emit = defineEmits(["key-event"]);
+
+const props = defineProps({
+  /**
+   * `{ key: 'x', class: 'miss | present | match' }`
+   */
+  keyClass: {
+    type: Array,
+    default: () => [],
   },
+});
 
-  data() {
-    return {
-      keys: [
-        ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
-        ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
-        ["z", "x", "c", "v", "b", "n", "m"],
-        ["Enter", "Backspace" /*, "Reset"*/],
-      ],
-    };
-  },
+const keyboard = reactive({
+  keys: [
+    ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+    ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+    ["z", "x", "c", "v", "b", "n", "m"],
+    ["Enter", "Backspace" /*, "Reset"*/],
+  ],
+});
 
-  computed: {
-    keyset() {
-      return this.keys[0].concat(this.keys[1], this.keys[2], this.keys[3]);
-    },
-  },
+const keyset = computed(() => {
+  return keyboard.keys[0].concat(
+    keyboard.keys[1],
+    keyboard.keys[2],
+    keyboard.keys[3]
+  );
+});
 
-  methods: {
-    onKeyPress(key) {
-      this.$emit("key-event", key);
-    },
-
-    onKeydown(e) {
-      if (this.keyset.includes(e.key)) {
-        this.onKeyPress(e.key);
-        this.onPressed(e.key);
-      }
-    },
-
-    onKeyup(e) {
-      if (this.keyset.includes(e.key)) {
-        this.onRelease(e.key);
-      }
-    },
-
-    onPressed(key) {
-      this.$refs[`key${key}`][0].classList.add("pressed");
-    },
-
-    onRelease(key) {
-      this.$refs[`key${key}`][0].classList.remove("pressed");
-    },
-
-    updateKeyClass() {
-      for (const key of this.keyClass) {
-        this.$refs[`key${key.key}`][0].classList.add(key.class);
-      }
-    },
-  },
-
-  watch: {
-    keyClass() {
-      if (this.keyClass.length > 0) {
-        this.updateKeyClass();
-      }
-    },
-  },
-
-  created() {
-    window.addEventListener("keydown", this.onKeydown);
-    window.addEventListener("keyup", this.onKeyup);
-  },
-
-  beforeUnmount() {
-    window.removeEventListener("keydown", this.onKeydown);
-    window.removeEventListener("keyup", this.onKeyup);
-  },
+const onKeyPress = (key) => {
+  emit("key-event", key);
 };
+
+const onKeydown = (e) => {
+  if (keyset.value.includes(e.key)) {
+    onKeyPress(e.key);
+    onPressed(e.key);
+  }
+};
+
+const onKeyup = (e) => {
+  if (keyset.value.includes(e.key)) {
+    onRelease(e.key);
+  }
+};
+
+const onPressed = (key) => {
+  keyRefs.value[key].classList.add("pressed");
+};
+
+const onRelease = (key) => {
+  keyRefs.value[key].classList.remove("pressed");
+};
+
+const updateKeyClass = () => {
+  for (const key of props.keyClass) {
+    keyRefs.value[`${key.key}`].classList.add(key.class);
+  }
+};
+
+watch(
+  () => props.keyClass,
+  () => {
+    if (props.keyClass.length > 0) updateKeyClass();
+  }
+);
+
+onBeforeMount(() => {
+  window.addEventListener("keydown", onKeydown);
+  window.addEventListener("keyup", onKeyup);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", onKeydown);
+  window.removeEventListener("keyup", onKeyup);
+});
 </script>
 
 <style lang="scss" scoped>

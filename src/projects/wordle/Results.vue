@@ -25,7 +25,7 @@
       v-for="(guess, index) in props.stats.guessDistribution"
       :class="[
         'guess',
-        { current: attempt === Number(index.replace('guess', '')) },
+        { current: props.attempt === Number(index.replace('guess', '')) },
       ]"
       :key="index"
     >
@@ -72,7 +72,7 @@ const onClearStats = () => {
 };
 
 onMounted(() => {
-  const obj = this.stats.guessDistribution;
+  const obj = props.stats.guessDistribution;
   wordle.largestDist = 0;
 
   for (var el in obj) {

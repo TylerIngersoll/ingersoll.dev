@@ -56,8 +56,8 @@
       {
         "heading": "Wordle Clone",
         "content": [
-          "This is a Wordle clone I made because I wanted to play it more than once a day.",
-          "<a href='/projects/wordle-clone'>Click here</a>"
+          "Wordle is all the rage right now but I didn't like that I could only play it once per day... so I made my own clone that allows unlimited play!",
+          "The GitHub repo is <a href='https://github.com/TylerIngersoll/wordle-clone' target='_blank' ref='noopener noreferrer'>TylerIngersoll/wordle-clone</a>"
         ]
       },
       {

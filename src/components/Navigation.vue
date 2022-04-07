@@ -29,6 +29,12 @@ defineProps({
 .navigation {
   padding-bottom: 1rem;
 
+  @media screen and (min-width: $md) {
+    position: sticky;
+    top: 0;
+    background-color: $gray6;
+  }
+
   &-items {
     list-style-type: none;
     margin: 0;

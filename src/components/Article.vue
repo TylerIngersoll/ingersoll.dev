@@ -1,6 +1,7 @@
 <template>
   <article>
     <component
+      v-if="props.article.heading"
       :is="headingLevel"
       :class="{ 'first-heading': props.index === 0 }"
       v-html="props.article.heading"

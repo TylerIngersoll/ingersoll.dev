@@ -1,6 +1,6 @@
 <template>
   <footer v-if="content" class="footer-container">
-    <div class="container">
+    <section class="container footer-social">
       <h2 v-html="content.socialHeading" />
       <div class="social">
         <SocialIcons
@@ -13,7 +13,15 @@
           :url="link.url"
         />
       </div>
-    </div>
+    </section>
+    <section class="container footer-legal">
+      <p
+        class="legal"
+        v-for="(para, index) in content.legal"
+        :key="index"
+        v-html="para"
+      />
+    </section>
   </footer>
 </template>
 
@@ -46,5 +54,14 @@ defineProps({
   @media screen and (max-width: $md) {
     justify-content: space-between;
   }
+}
+
+.footer-legal {
+  margin-top: 2rem;
+}
+
+.legal {
+  margin: 0;
+  font-size: 0.8rem;
 }
 </style>

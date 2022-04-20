@@ -19,7 +19,7 @@ export const useContentStore = defineStore("content", {
       if (process.env.NODE_ENV === "production") {
         client
           .getEntry(process.env.VUE_APP_CONTENTFUL_ENTRY)
-          .then((entry) => (this.content = entry.fields.siteContent))
+          .then((entry) => (this.content = entry.fields.siteContent.content))
           .catch(() => {
             useLocalJson();
           });

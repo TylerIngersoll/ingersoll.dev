@@ -36,6 +36,9 @@ defineProps({
   }
 
   &-items {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -50,7 +53,7 @@ defineProps({
 
     @media screen and (min-width: $md) {
       display: inline-block;
-      margin: 0 2rem 1rem 4px;
+      margin: 0 1rem 1rem;
     }
 
     &::before {

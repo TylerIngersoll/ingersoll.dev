@@ -64,6 +64,21 @@ const computedTitle = computed(() => {
       max-height: 1rem;
       max-width: 1rem;
       transition: all 0.3s;
+
+      &.github {
+        max-height: 2rem;
+        max-width: 2rem;
+      }
+
+      &.linkedin {
+        max-height: 1.1rem;
+        max-width: 1.1rem;
+      }
+
+      &.twitter {
+        max-height: 1.5rem;
+        max-width: 1.5rem;
+      }
     }
 
     &:hover {

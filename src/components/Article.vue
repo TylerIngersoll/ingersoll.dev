@@ -75,6 +75,6 @@ const inlineStyle = computed(() => {
 }
 
 .bullet {
-  margin: 0 0.5rem;
+  margin: 0 0.4rem;
 }
 </style>

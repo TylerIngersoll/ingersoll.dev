@@ -63,6 +63,8 @@ const computedTitle = computed(() => {
       fill: $highlight1;
       max-height: 1rem;
       max-width: 1rem;
+      width: 100%;
+      height: 100%;
       transition: all 0.3s;
 
       &.github {

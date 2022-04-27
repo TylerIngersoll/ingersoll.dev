@@ -45,7 +45,7 @@ defineProps({
 }
 
 .social {
-  margin: 1rem -0.5rem 0;
+  margin: 1rem 0 0;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;

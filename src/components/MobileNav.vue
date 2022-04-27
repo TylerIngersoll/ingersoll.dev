@@ -249,7 +249,7 @@ $menu-active-hover-filter: $menu-hover-filter !default;
     &-item {
       margin: 0 0 2rem;
       color: white;
-      font-size: 1.4rem;
+      font-size: 1rem;
       font-weight: 600;
       text-transform: uppercase;
       text-decoration: none;

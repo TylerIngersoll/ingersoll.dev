@@ -32,7 +32,13 @@ jest.mock("@/store", () => ({
   useContentStore: jest.fn(() => mockStore),
 }));
 
-const componentStubs = ["Header", "MobileNav", "Navigation", "RouterView", "Footer"];
+const componentStubs = [
+  "Header",
+  "MobileNav",
+  "Navigation",
+  "RouterView",
+  "Footer",
+];
 
 const defaultMountOptions = {
   global: {
@@ -69,8 +75,8 @@ describe("App.vue", () => {
       global: {
         provide: {
           mediaQuery: { isSmall: true },
-				},
-				stubs: componentStubs,
+        },
+        stubs: componentStubs,
       },
     });
     await nextTick();
@@ -95,8 +101,8 @@ describe("App.vue", () => {
       global: {
         provide: {
           mediaQuery: { isSmall: true },
-				},
-				stubs: componentStubs,
+        },
+        stubs: componentStubs,
       },
     });
 

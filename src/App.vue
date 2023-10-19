@@ -30,7 +30,7 @@ const mobileNav = reactive({
 });
 
 const content = computed(() => {
-  return store.content;
+  return store.content || { meta: {}, navigation: {}, footer: {} };
 });
 
 const onMobileNavClicked = (value) => {

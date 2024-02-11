@@ -20,7 +20,7 @@
 
 <script setup>
 import { useContentStore } from "@/store";
-import { reactive, inject, computed, onBeforeMount } from "vue";
+import { reactive, inject, computed, onBeforeMount, onUnmounted } from "vue";
 
 const store = useContentStore();
 const mediaQuery = inject("mediaQuery");
@@ -30,7 +30,7 @@ const mobileNav = reactive({
 });
 
 const content = computed(() => {
-  return store.content;
+  return store.content || { meta: {}, navigation: {}, footer: {} };
 });
 
 const onMobileNavClicked = (value) => {
@@ -38,6 +38,10 @@ const onMobileNavClicked = (value) => {
 };
 
 onBeforeMount(() => store.loadContent());
+
+onUnmounted(() => {
+  this.$cleanupMediaQueryListeners();
+});
 </script>
 
 <style lang="scss">

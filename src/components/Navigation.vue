@@ -7,7 +7,7 @@
           :key="index"
           class="navigation-item"
         >
-          <router-link :to="item.url" v-html="item.name" />
+          <router-link :to="item.url" :innerHTML="item.name" />
         </li>
       </ul>
     </div>
